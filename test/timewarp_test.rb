@@ -37,5 +37,9 @@ class TimewarpTest < Test::Unit::TestCase
     should "return a constant time" do
       assert_equal :frozen_time, Timewarp.freeze(:frozen_time) {Time.now}
     end
+
+    should "parse the time if it is a string" do
+      assert_equal Time.parse("2009-07-01 12:01:01"), Timewarp.freeze("2009-07-01 12:01:01") {Time.now}
+    end
   end
 end

@@ -1,5 +1,8 @@
+require 'time'
+
 module Timewarp
-  def self.freeze(frozen_time, &block)
+  def self.freeze(time, &block)
+    frozen_time = time.is_a?(String) ? Time.parse(time) : time
     control_timeline proc {frozen_time}, &block
   end
 
